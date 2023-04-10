@@ -3,7 +3,6 @@
 ## Table of Contents
  - [Introduction](#introduction)  
  - [Overview of Scala](#overview-of-scala)  
- - [Basic Syntax](#basic-syntax)
  - [lambda and HOPs in Scala](#lambda-and-hops-in-scala)
    - [lambda](#lambda)
    - [map](#map)
@@ -31,17 +30,18 @@ data analysis, and scientific computing. Its combination of object-oriented and 
 it a versatile language that can be used for many different types of projects.  
 [The install instruction of Scala](https://www.scala-lang.org/download/)  
 [A nice tutorial for you to get started](https://docs.scala-lang.org/getting-started/index.html)  
-[Another tutorial for beginners](https://www.tutorialspoint.com/scala/index.htm)
+
 
 Currently, Scala 2 and Scala 3 are two major versions of the Scala programming language. 
 The main version of Scala has been Scala 2 from its initial release in 2004. 
 In 2020, Scala 3, also known as Dotty, saw its initial release. It is a significant update to the 
 language that adds a number of new features and enhancements.
 
-In this lesson, we will be using **Scala 3** to demonstrate HOPs in Scala.  
+You can learn Scala's basic syntax through online tutorials to help you get started with the language. For example, you can refer to [a tutorial on Scala Basic Syntax
+](https://www.tutorialspoint.com/scala/scala_basic_syntax.htm)
 
+In this lesson, we will be using **Scala 3** to demonstrate HOPs in Scala. 
 
-## Basic Syntax
 
 ## lambda and HOPs in Scala
 In this section we will be discussing the use of lambda and HOPs in Scala.
@@ -316,14 +316,7 @@ fold[A1 >: A](z: A1)(op: (A1, A1) => A1): A1
 foldLeft[B](z: B)(f: (B, A) => B): B
 foldRight[B](z: B)(f: (A, B) => B): B
 ```
-In all the folds, the type of starter value z must be the same type as return value while the type of the elements processed does not necessarily need to be the same.
-Considering a variant of the above example:
-```
-val stringifiedInts = List("1", "2", "3", "4", "5")
-val foldLeftSum = stringifiedInts.foldLeft(0)((acc, currNum) => acc + currNum.toInt)
-val foldRightSum = stringifiedInts.foldRight(0)((currNum, acc) => currNum.toInt + acc)
-println()
-```
+
 
 ## Conclusion
 In this tutorial, we delved into the world of functional programming in Scala, focusing on the equivalents of lambda, map, filter, and fold. We started with a brief introduction to Scala and its basic syntax, then explored lambda expressions and their use cases.
