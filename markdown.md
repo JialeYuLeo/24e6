@@ -316,7 +316,14 @@ fold[A1 >: A](z: A1)(op: (A1, A1) => A1): A1
 foldLeft[B](z: B)(f: (B, A) => B): B
 foldRight[B](z: B)(f: (A, B) => B): B
 ```
-
+In all the folds, the type of starter value z must be the same type as return value while the type of the elements processed does not necessarily need to be the same.
+Considering a variant of the above example:
+```
+val stringifiedInts = List("1", "2", "3", "4", "5")
+val foldLeftSum = stringifiedInts.foldLeft(0)((acc, currNum) => acc + currNum.toInt)
+val foldRightSum = stringifiedInts.foldRight(0)((currNum, acc) => currNum.toInt + acc)
+println()
+```
 
 ## Conclusion
 In this tutorial, we delved into the world of functional programming in Scala, focusing on the equivalents of lambda, map, filter, and fold. We started with a brief introduction to Scala and its basic syntax, then explored lambda expressions and their use cases.
