@@ -232,14 +232,6 @@ The output will be:
 Sum using foldLeft: 15
 Sum using foldRight: 15
 ```
-
-The fold method iterates over a collection using an initial value for the accumulator and a function that correctly updates the accumulator using each element. The fold method has two variants - foldLeft and foldRight. 
-We are familiar with foldLeft and foldRight since it has been covered in Racket.
-
-```
-List(e1, e2, e3, ... en).foldLeft(id)(f) = f(f(f(id, 1), 2),... n)
-List(e1, e2, e3, ... en).foldRight(id)(f) = f(1, f(2, ...f(n, id)))
-```
 But in Scala, we have a fold() method also which does not specify the order of processing order of elements in the input list. The fold method primarily exists to support ***parallelism***. 
 In order to make parallel programming easier, parallel collections were added to the Scala standard library. By sparing users from low-level parallelization complexities, parallel collections offer them a straightforward and recognisable high-level abstraction. The processing of large amounts of data, multimedia, and heavy calculations can all be sped up with parallel computing. Hence parallel collections will be useful when users are dealing with large input data.
 To perform the same operation in ***parallel***, one just simply invoke the `par` method on the collection.
