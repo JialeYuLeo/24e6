@@ -254,15 +254,15 @@ Sum using foldRight: 15
 But in Scala, we have a fold() method also which does not specify the order of processing order of elements in the input list. The fold method primarily exists to support ***parallelism***. 
 In order to make parallel programming easier, parallel collections were added to the Scala standard library. By sparing users from low-level parallelization complexities, parallel collections offer them a straightforward and recognisable high-level abstraction. The processing of large amounts of data, multimedia, and heavy calculations can all be sped up with parallel computing. Hence parallel collections will be useful when users are dealing with large input data.
 To perform the same operation in ***parallel***, one just simply invoke the `par` method on the collection.
-```
-// first we want to parallelize the list to see the difference between the behavior of fold() and foldLeft()/foldRight().
+```Scala
+// first we have to parallelize the list using .par()
 // without parallelizing the list fold() will act exactly the same as foldLeft().
 // the script below will print the actuall process of the internal execution
 
   val parallelNum = List(1, 2, 3, 4, 5).par
   val foldResult = parallelNumSeq.fold(0) { (acc1, acc2) =>
     val sum = acc1 + acc2
-    println(s"Fold: acc1($acc1) + acc2($acc2) = $sum")
+    println(s"Fold: acc1_is($acc1) + acc2_is($acc2) = $sum")
     sum
   }
   println(foldResult)
@@ -270,7 +270,7 @@ To perform the same operation in ***parallel***, one just simply invoke the `par
   val foldLeftResult =
     parallelNum.foldLeft(0) { (acc, currNum) =>
       val sum = acc + currNum
-      println(s"FoldLeft: acc($acc) + currNum($currNum) = $sum ")
+      println(s"FoldLeft: acc_is($acc) + currNum_is($currNum) = $sum ")
       sum
     }
   println(foldLeftResult)
@@ -278,7 +278,7 @@ To perform the same operation in ***parallel***, one just simply invoke the `par
   val foldRightResult =
     parallelNum.foldRight(0) { (currNum, acc) =>
       val sum = acc + currNum
-      println(s"FoldRight: acc($acc) + currNum($currNum) = $sum")
+      println(s"FoldRight: acc_is($acc) + currNum_is($currNum) = $sum")
       sum
     }
   println(foldRightResult)
