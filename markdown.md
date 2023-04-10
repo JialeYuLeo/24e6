@@ -4,7 +4,7 @@
  - [Introduction](#introduction)  
  - [Overview of Scala](#overview-of-scala)  
  - [Basic Syntax](#basic-syntax)
- - [lamda and HOPs in Scala](#lambda-and-hops-in-scala)
+ - [lambda and HOPs in Scala](#lambda-and-hops-in-scala)
    - [lambda](#lambda)
    - [map](#map)
    - [filter](#filter)
@@ -47,6 +47,34 @@ In this lesson, we will be using **Scala 3** to demonstrate HOPs in Scala.
 In this section we will be disscussing the use of lambda and HOPs in Scala.
 
 ### lambda
+
+Lambda expression uses anonymous functions to define reusable functions in a concise way. It is particularly useful when you need to pass a function as an argument to higher-order function, such as map and filter.
+
+#### Syntax
+```Scala
+val variableName = (inputVariable: DataType) => transformationExpression
+```
+
+#### Example 1: Basic lambda function
+```Scala
+object Lambda
+{
+  
+    def main(args:Array[String]) = 
+    {
+        val add = (x: Int, y: Int) => x + y
+        val result = add(5, 7)
+        println(result) // Output: 12
+  
+    }
+  
+}
+```
+The output will be:
+```
+12
+```
+
 
 
 In Scala, a collection is a data structure that houses a number of items. Collections include things like List, Tuple, Option, Map, etc.
