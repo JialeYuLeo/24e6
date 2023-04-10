@@ -63,8 +63,8 @@ object Lambda
     {
         // Define a lambda function that takes a string and returns its reverse
         val reverseString = (input: String) => input.reverse  
-        val result = reverseString("Scala")
-        println(result)
+        val resultEx1 = reverseString("Scala")
+        println(resultEx1)
     }
 }
 ```
@@ -83,8 +83,8 @@ object Lambda
     {
         // Define a lambda function that takes two integers and returns the sum
         val add = (x: Int, y: Int) => x + y
-        val result = add(5, 7)
-        println(result)
+        val resultEx2 = add(5, 7)
+        println(resultEx2)
     }
 }
 ```
