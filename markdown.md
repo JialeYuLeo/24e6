@@ -196,7 +196,7 @@ def filter(p: (A) => Boolean): List[A]
 ```Scala
 object Filter {
    def main(args: Array[String]) = {
-      val list = List(3, 6, 9, 4, 2)
+      val list = List(1, 2, 3, 6, 9, 4, 12)
       println(list)
       val result = list.filter(x=>{x % 3 == 0})
       println(result)      
@@ -205,8 +205,8 @@ object Filter {
 ```
 The output will be:
 ```Scala
-List(3, 6, 9, 4, 2)
-List(3, 6, 9)
+List(1, 2, 3, 6, 9, 12)
+List(3, 6, 9, 12)
 ```
 
 ### fold
