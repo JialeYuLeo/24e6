@@ -55,23 +55,42 @@ Lambda expression uses anonymous functions to define reusable functions in a con
 val variableName = (inputVariable: DataType) => transformationExpression
 ```
 
-#### Example 1: Basic lambda function
+#### Example 1: Basic lambda function with String
 ```Scala
 object Lambda
 {
-  
     def main(args:Array[String]) = 
     {
+        // Define a lambda function that takes a string and returns its reverse
+        val reverseString = (input: String) => input.reverse  
+        val result = reverseString("Scala")
+        println(result)
+    }
+}
+```
+
+The output will be:
+
+```Scala
+alacS
+```
+
+#### Example 2: Basic lambda function with Int
+```Scala
+object Lambda
+{
+    def main(args:Array[String]) = 
+    {
+        // Define a lambda function that takes two integers and returns the sum
         val add = (x: Int, y: Int) => x + y
         val result = add(5, 7)
-        println(result) // Output: 12
-  
+        println(result)
     }
-  
 }
 ```
 The output will be:
-```
+
+```Scala
 12
 ```
 
@@ -87,7 +106,7 @@ Some important remarks:
 - map() returns a new collection of the same type as the source collection.
 
 #### Syntax
-```
+```Scala
 // collection is the original collection
 // func is a predefined function
 collection = (e1, e2, e3, ...)
@@ -95,7 +114,7 @@ result_collection = collection.map(func)
 ```
 
 #### Example 1: pass a user defined function
-```
+```Scala
 object Map
 {
     // square of an integer
@@ -115,11 +134,14 @@ object Map
     }
   
 }
+```
 The output will be:
+
+```Scala
 List(1, 4, 9, 16, 25, 36)
 ```
 #### Example 2: define the body of func in the bracket
-```
+```Scala
 object Map
 {
     def main(args:Array[String]) = 
@@ -133,12 +155,15 @@ object Map
     }
   
 }
+```
+
 The output will be:
+```Scala
 List(Joel, Ed, Chris, Maurice)
 ```
 Since we have discuessed the use of lambda expression in Scala, we can also use lambda expression
 #### Example 3
-```
+```Scala
 object Map
 {
     def main(args:Array[String]) = 
@@ -153,7 +178,10 @@ object Map
     }
   
 }
+```
+
 The output will be:
+```Scala
 List(1, 4, 9, 16, 25, 36)
 ```
 
