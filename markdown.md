@@ -309,12 +309,33 @@ FoldRight: acc(12) + currNum(2) = 14
 FoldRight: acc(14) + currNum(1) = 15
 15
 ```
+See how the initial value (0) is utilised multiple times while it is only used once in the `foldLeft` nad `foldRight`.
 
 Let's look at their method signatures to better grasp the distinctions between the different folds:
 ```Scala
 fold[A1 >: A](z: A1)(op: (A1, A1) => A1): A1
 foldLeft[B](z: B)(f: (B, A) => B): B
 foldRight[B](z: B)(f: (A, B) => B): B
+```
+In all the folds, the type of starter value z must be the same type as return value while the type of the elements processed does not necessarily need to be the same.
+Considering a variant of the above example:
+```Scala
+val stringifiedInts = List("1", "2", "3", "4", "5")
+val foldLeftSum = stringifiedInts.foldLeft(0)((acc, currNum) => acc + currNum.toInt)
+println(foldLeftSum)
+```
+But this will ***not*** work with fold:
+```Scala
+val foldSum = stringifiedInts.fold(0)((currNum, acc) => currNum.toInt + acc) //this line will throw error
+```
+The following error will be thrown during compiliation.
+```
+[error] -- [E008] Not Found Error: /Users/jialeyu/Desktop/24e6/fold/src/main/scala/Main.scala:30:66 
+[error] 30 |  val foldSum = stringifiedInts.fold(0)((currNum, acc) => currNum.toInt + acc)
+[error]    |                                                          ^^^^^^^^^^^^^
+[error]    |                                value toInt is not a member of Matchable
+[error] one error found
+[error] (Compile / compileIncremental) Compilation failed
 ```
 
 
