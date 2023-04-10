@@ -259,31 +259,32 @@ To perform the same operation in ***parallel***, one just simply invoke the `par
 // without parallelizing the list fold() will act exactly the same as foldLeft().
 // the script below will print the actuall process of the internal execution
 
-  val parallelNum = List(1, 2, 3, 4, 5).par
-  val foldResult = parallelNumSeq.fold(0) { (acc1, acc2) =>
-    val sum = acc1 + acc2
-    println(s"Fold: acc1($acc1) + acc2($acc2) = $sum")
-    sum
-  }
-  println(foldResult)
+val parallelNum = List(1, 2, 3, 4, 5).par
+val foldResult = parallelNumSeq.fold(0) { (acc1, acc2) =>
+  val sum = acc1 + acc2
+  println(s"Fold: acc1($acc1) + acc2($acc2) = $sum")
+  sum
+}
+println(foldResult)
 
-  val foldLeftResult =
-    parallelNum.foldLeft(0) { (acc, currNum) =>
-      val sum = acc + currNum
-      println(s"FoldLeft: acc($acc) + currNum($currNum) = $sum ")
-      sum
-    }
-  println(foldLeftResult)
+val foldLeftResult = parallelNum.foldLeft(0) { (acc, currNum) =>
+  val sum = acc + currNum
+  println(s"FoldLeft: acc($acc) + currNum($currNum) = $sum ")
+  sum
+}
+println(foldLeftResult)
 
-  val foldRightResult =
-    parallelNum.foldRight(0) { (currNum, acc) =>
-      val sum = acc + currNum
-      println(s"FoldRight: acc($acc) + currNum($currNum) = $sum")
-      sum
-    }
-  println(foldRightResult)
+val foldRightResult = parallelNum.foldRight(0) { (currNum, acc) =>
+  val sum = acc + currNum
+  println(s"FoldRight: acc($acc) + currNum($currNum) = $sum")
+  sum
+}
+println(foldRightResult)
+```
 
 And the output will be:
+
+```
 Fold: acc1(0) + acc2(4) = 4
 Fold: acc1(0) + acc2(2) = 2
 Fold: acc1(0) + acc2(5) = 5
@@ -307,6 +308,14 @@ FoldRight: acc(12) + currNum(2) = 14
 FoldRight: acc(14) + currNum(1) = 15
 15
 ```
+
+Let's look at their method signatures to better grasp the distinctions between the different folds:
+```Scala
+fold[A1 >: A](z: A1)(op: (A1, A1) => A1): A1
+foldLeft[B](z: B)(f: (B, A) => B): B
+foldRight[B](z: B)(f: (A, B) => B): B
+```
+
 
 ## Conclusion
 In this tutorial, we delved into the world of functional programming in Scala, focusing on the equivalents of lambda, map, filter, and fold. We started with a brief introduction to Scala and its basic syntax, then explored lambda expressions and their use cases.
