@@ -251,13 +251,14 @@ The output will be:
 Sum using foldLeft: 15
 Sum using foldRight: 15
 ```
-But in Scala, we have a fold() method also which does not specify the order of processing order of elements in the input list. The fold method primarily exists to support ***parallelism***. 
+
+But in Scala, we have a fold() method also which does not specify the order of processing order of elements in the input list. Next we will be looking at the difference between `fold` and `foldLeft`/`foldRight`
+The fold method primarily exists to support ***parallelism***. 
 In order to make parallel programming easier, parallel collections were added to the Scala standard library. By sparing users from low-level parallelization complexities, parallel collections offer them a straightforward and recognisable high-level abstraction. The processing of large amounts of data, multimedia, and heavy calculations can all be sped up with parallel computing. Hence parallel collections will be useful when users are dealing with large input data.
 To perform the same operation in ***parallel***, one just simply invoke the `par` method on the collection.
 ```
-// first we want to parallelize the list to see the difference between the behavior of fold() and foldLeft()/foldRight().
+// first we want to parallelize the list using .par
 // without parallelizing the list fold() will act exactly the same as foldLeft().
-// the script below will print the actuall process of the internal execution
 
 val parallelNum = List(1, 2, 3, 4, 5).par
 val foldResult = parallelNumSeq.fold(0) { (acc1, acc2) =>
