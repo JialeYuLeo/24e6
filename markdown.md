@@ -185,6 +185,9 @@ The output will be:
 List(1, 4, 9, 16, 25, 36)
 ```
 
+### filter
+
+
 ### fold
 The fold method iterates over a collection using an initial value for the accumulator and a function that correctly updates the accumulator using each element. The fold method has two variants - `foldLeft` and `foldRight`. They differ in the direction in which they traverse the collection: `foldLeft` processes elements from left to right, and `foldRight` processes elements from right to left.
 
@@ -228,6 +231,74 @@ Sum using foldLeft: 15
 Sum using foldRight: 15
 ```
 
+
+
+The fold method iterates over a collection using an initial value for the accumulator and a function that correctly updates the accumulator using each element. The fold method has two variants - foldLeft and foldRight. 
+We are familiar with foldLeft and foldRight since it has been covered in Racket.
+
+```
+List(e1, e2, e3, ... en).foldLeft(id)(f) = f(f(f(id, 1), 2),... n)
+List(e1, e2, e3, ... en).foldRight(id)(f) = f(1, f(2, ...f(n, id)))
+```
+But in Scala, we have a fold() method also which does not specify the order of processing order of elements in the input list. The fold method primarily exists to support ***parallelism***. 
+In order to make parallel programming easier, parallel collections were added to the Scala standard library. By sparing users from low-level parallelization complexities, parallel collections offer them a straightforward and recognisable high-level abstraction. The processing of large amounts of data, multimedia, and heavy calculations can all be sped up with parallel computing. Hence parallel collections will be useful when users are dealing with large input data.
+To perform the same operation in ***parallel***, one just simply invoke the `par` method on the collection.
+```
+// first we want to parallelize the list to see the difference between the behavior of fold() and foldLeft()/foldRight().
+// without parallelizing the list fold() will act exactly the same as foldLeft().
+
+val parallelNum = List(1, 2, 3, 4, 5, 6).par
+
+// the script below will print the actuall process of the internal execution
+
+  val parallelNum = List(1, 2, 3, 4, 5).par
+  val foldResult = parallelNumSeq.fold(0) { (acc1, acc2) =>
+    val sum = acc1 + acc2
+    println(s"Fold: acc1($acc1) + acc2($acc2) = $sum")
+    sum
+  }
+  println(foldResult)
+
+  val foldLeftResult =
+    parallelNum.foldLeft(0) { (acc, currNum) =>
+      val sum = acc + currNum
+      println(s"FoldLeft: acc($acc) + currNum($currNum) = $sum ")
+      sum
+    }
+  println(foldLeftResult)
+
+  val foldRightResult =
+    parallelNum.foldRight(0) { (currNum, acc) =>
+      val sum = acc + currNum
+      println(s"FoldRight: acc($acc) + currNum($currNum) = $sum")
+      sum
+    }
+  println(foldRightResult)
+
+And the output will be:
+Fold: acc1(0) + acc2(4) = 4
+Fold: acc1(0) + acc2(2) = 2
+Fold: acc1(0) + acc2(5) = 5
+Fold: acc1(0) + acc2(3) = 3
+Fold: acc1(0) + acc2(1) = 1
+Fold: acc1(1) + acc2(2) = 3
+Fold: acc1(4) + acc2(5) = 9
+Fold: acc1(3) + acc2(9) = 12
+Fold: acc1(3) + acc2(12) = 15
+15
+FoldLeft: acc(0) + currNum(1) = 1 
+FoldLeft: acc(1) + currNum(2) = 3 
+FoldLeft: acc(3) + currNum(3) = 6 
+FoldLeft: acc(6) + currNum(4) = 10 
+FoldLeft: acc(10) + currNum(5) = 15 
+15
+FoldRight: acc(0) + currNum(5) = 5
+FoldRight: acc(5) + currNum(4) = 9
+FoldRight: acc(9) + currNum(3) = 12
+FoldRight: acc(12) + currNum(2) = 14
+FoldRight: acc(14) + currNum(1) = 15
+15
+```
 ## Conlusion
 
 
