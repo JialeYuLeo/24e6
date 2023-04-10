@@ -124,11 +124,11 @@ object Map
     def main(args:Array[String]) = 
     {
         // original collection
-        val collection = List(1, 2, 3, 4, 5, 6) 
+        val collectionEx1 = List(1, 2, 3, 4, 5, 6) 
         
         // result collection
-        val result_collection = collection.map(square)
-        println(result_collection)
+        val result_collectionEx1 = collectionEx1.map(square)
+        println(result_collectionEx1)
   
     }
   
@@ -146,11 +146,11 @@ object Map
     def main(args:Array[String]) = 
     {
         // original collection
-        val collection = List("joel", "ed", "chris", "maurice")
+        val collectionEx2 = List("joel", "ed", "chris", "maurice")
         
         // result collection
-        val result_collection = collection.map(_.capitalize)
-        println(result_collection)
+        val result_collectionEx2 = collectionEx2.map(_.capitalize)
+        println(result_collectionEx2)
     }
   
 }
@@ -168,11 +168,11 @@ object Map
     def main(args:Array[String]) = 
     {
         // original collection
-        val collection = List(1, 2, 3, 4, 5, 6) 
+        val collectionEx3 = List(1, 2, 3, 4, 5, 6) 
         
         // result collection
-        val result_collection = collection.map(x => x * x )
-        println(result_collection)
+        val result_collectionEx3 = collectionEx3.map(x => x * x )
+        println(result_collectionEx3)
   
     }
   
