@@ -226,7 +226,7 @@ In both cases, the initialValue is the starting value of the accumulator, and op
 
 #### Example
 ```Scala
-object Map
+object Fold
 {
     def main(args:Array[String]) = 
     {
