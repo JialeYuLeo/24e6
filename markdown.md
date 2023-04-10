@@ -251,7 +251,9 @@ The output will be:
 Sum using foldLeft: 15
 Sum using foldRight: 15
 ```
-But in Scala, we have a fold() method also which does not specify the order of processing order of elements in the input list. The fold method primarily exists to support ***parallelism***. 
+But in Scala, we have a fold() method also which does not specify the order of processing order of elements in the input list. Next we will be looking at the difference between `fold` and `foldLeft`/`foldRight`
+
+The fold method primarily exists to support ***parallelism***. 
 In order to make parallel programming easier, parallel collections were added to the Scala standard library. By sparing users from low-level parallelization complexities, parallel collections offer them a straightforward and recognisable high-level abstraction. The processing of large amounts of data, multimedia, and heavy calculations can all be sped up with parallel computing. Hence parallel collections will be useful when users are dealing with large input data.
 To perform the same operation in ***parallel***, one just simply invoke the `par` method on the collection.
 ```Scala
@@ -280,9 +282,10 @@ val foldRightResult = parallelNum.foldRight(0) { (currNum, acc) =>
   sum
 }
 println(foldRightResult)
-
-
+```
 And the output will be:
+
+```
 Fold: acc1(0) + acc2(4) = 4
 Fold: acc1(0) + acc2(2) = 2
 Fold: acc1(0) + acc2(5) = 5
@@ -306,9 +309,17 @@ FoldRight: acc(12) + currNum(2) = 14
 FoldRight: acc(14) + currNum(1) = 15
 15
 ```
+Let's look at their method signatures to better grasp the distinctions between the different folds:
+```Scala
+fold[A1 >: A](z: A1)(op: (A1, A1) => A1): A1
+foldLeft[B](z: B)(f: (B, A) => B): B
+foldRight[B](z: B)(f: (A, B) => B): B
+```
+
+
 ## Conlusion
 
 
 ## Reference
-https://docs.scala-lang.org/overviews/scala-book/collections-methods.html#map
+https://docs.scala-lang.org/overviews/scala-book/collections-methods.html#map  
 https://www.baeldung.com/scala/folding-lists
