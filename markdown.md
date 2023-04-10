@@ -57,7 +57,7 @@ val variableName = (inputVariable: DataType) => transformationExpression
 
 #### Example 1: Basic lambda function with String
 ```Scala
-object Lambda
+object Demo
 {
     def main(args:Array[String]) = 
     {
@@ -77,7 +77,7 @@ alacS
 
 #### Example 2: Basic lambda function with Int
 ```Scala
-object Lambda
+object Demo
 {
     def main(args:Array[String]) = 
     {
@@ -114,7 +114,7 @@ result_collection = collection.map(func)
 
 #### Example 1: pass a user defined function
 ```Scala
-object Map
+object Demo
 {
     // square of an integer
     def square(a:Int):Int =
@@ -141,7 +141,7 @@ List(1, 4, 9, 16, 25, 36)
 ```
 #### Example 2: define the body of func in the bracket
 ```Scala
-object Map
+object Demo
 {
     def main(args:Array[String]) = 
     {
@@ -163,7 +163,7 @@ List(Joel, Ed, Chris, Maurice)
 Since we have discussed the use of lambda expression in Scala, we can also use lambda expression
 #### Example 3
 ```Scala
-object Map
+object Demo
 {
     def main(args:Array[String]) = 
     {
@@ -194,7 +194,7 @@ def filter(p: (A) => Boolean): List[A]
 
 #### Example
 ```Scala
-object Filter {
+object Demo {
    def main(args: Array[String]) = {
       val list = List(1, 2, 3, 6, 9, 4, 12)
       println(list)
