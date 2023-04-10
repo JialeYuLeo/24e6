@@ -312,3 +312,4 @@ FoldRight: acc(14) + currNum(1) = 15
 
 ## Reference
 https://docs.scala-lang.org/overviews/scala-book/collections-methods.html#map
+https://www.baeldung.com/scala/folding-lists
