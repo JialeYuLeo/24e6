@@ -1,16 +1,16 @@
 # Using (equivalents of) lambda, map, filter, and fold in Scala
 
 ## Table of Contents
- - [Introduction](introduction)  
- - [Overview of Scala](overview-of-Scala)  
- - [Basic Syntax](basic-syntax)
- - [lamda and HOPs in Scala](lambda-hops-in-scala)
-   - [lamda](lamda)
-   - [map](map)
-   - [filter](filter)
-   - [fold](fold)
- - [Conclusion](conslusion)
- - [Reference](reference)
+ - [Introduction](#introduction)  
+ - [Overview of Scala](#overview-of-scala)  
+ - [Basic Syntax](#basic-syntax)
+ - [lamda and HOPs in Scala](#lambda-and-hops-in-scala)
+   - [lambda](#lambda)
+   - [map](#map)
+   - [filter](#filter)
+   - [fold](#fold)
+ - [Conclusion](#conclusion)
+ - [Reference](#reference)
  
  ## Introduction
  Functional programming is a programming paradigm that focuses on the use of functions to perform operations. 
@@ -44,10 +44,15 @@ In this lesson, we will be using **Scala 3** to demonstrate HOPs in Scala.
 ## Basic Syntax
 
 ## lambda and HOPs in Scala
-In this section we will be disscussing the use of lambda and HOPs in Scala, the code example will be 
+In this section we will be disscussing the use of lambda and HOPs in Scala.
 
-### Map
-In Scala, a collection is a data structure that houses a number of items. Collections include things like arrays, lists, etc. Many techniques can be used to modify these collections. Map() is one such popular technique that Scala provides.
+### lambda
+
+
+In Scala, a collection is a data structure that houses a number of items. Collections include things like List, Tuple, Option, Map, etc.
+Many techniques can be used to modify these collections. Here we will be focusing on the behavior of the HOPs on the most common type of Collection which is Lists. 
+
+### map
 The behavior is similar to Racket.
 Some important remarks:
 - Every collection object has the map() method.
@@ -124,7 +129,12 @@ The output will be:
 List(1, 4, 9, 16, 25, 36)
 ```
 
-### Fold
+### fold
+The fold method iterates over a collection using an initial value for the accumulator and a function that correctly updates the accumulator using each element. The fold method has two variants - foldLeft and foldRight. 
+
+
+
+
 
 ## Conlusion
 
