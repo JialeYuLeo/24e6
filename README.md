@@ -22,9 +22,13 @@ scala {replace-this-with-file-name}
 ```
 
 For running examples involving parallel collections using fold.
-Go to folder "fold", type the following commands in terminal
+Go to folder "fold", type the following command in terminal
 ```
 sbt
+```
+This will activate sbt
+In sbt prompt, type:
+```
 run
 ```
 You should be able to see the result.
