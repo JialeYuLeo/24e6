@@ -259,29 +259,28 @@ To perform the same operation in ***parallel***, one just simply invoke the `par
 // without parallelizing the list fold() will act exactly the same as foldLeft().
 // the script below will print the actuall process of the internal execution
 
-  val parallelNum = List(1, 2, 3, 4, 5).par
-  val foldResult = parallelNumSeq.fold(0) { (acc1, acc2) =>
-    val sum = acc1 + acc2
-    println(s"Fold: acc1_is($acc1) + acc2_is($acc2) = $sum")
-    sum
+val parallelNum = List(1, 2, 3, 4, 5).par
+val foldResult = parallelNum.fold(0) { (acc1, acc2) =>
+  val sum = acc1 + acc2
+  println(s"Fold: acc1_is($acc1) + acc2_is($acc2) = $sum")
+  sum
+}
+println(foldResult)
+
+val foldLeftResult = parallelNum.foldLeft(0) { (acc, currNum) =>
+  val sum = acc + currNum
+  println(s"FoldLeft: acc_is($acc) + currNum_is($currNum) = $sum ")
+  sum
   }
-  println(foldResult)
+println(foldLeftResult)
 
-  val foldLeftResult =
-    parallelNum.foldLeft(0) { (acc, currNum) =>
-      val sum = acc + currNum
-      println(s"FoldLeft: acc_is($acc) + currNum_is($currNum) = $sum ")
-      sum
-    }
-  println(foldLeftResult)
+val foldRightResult = parallelNum.foldRight(0) { (currNum, acc) =>
+  val sum = acc + currNum
+  println(s"FoldRight: acc_is($acc) + currNum_is($currNum) = $sum")
+  sum
+}
+println(foldRightResult)
 
-  val foldRightResult =
-    parallelNum.foldRight(0) { (currNum, acc) =>
-      val sum = acc + currNum
-      println(s"FoldRight: acc_is($acc) + currNum_is($currNum) = $sum")
-      sum
-    }
-  println(foldRightResult)
 
 And the output will be:
 Fold: acc1(0) + acc2(4) = 4
