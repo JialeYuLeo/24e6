@@ -71,7 +71,7 @@ object Lambda
 
 The output will be:
 
-```Scala
+```
 alacS
 ```
 
@@ -90,7 +90,7 @@ object Lambda
 ```
 The output will be:
 
-```Scala
+```
 12
 ```
 
@@ -136,7 +136,7 @@ object Map
 ```
 The output will be:
 
-```Scala
+```
 List(1, 4, 9, 16, 25, 36)
 ```
 #### Example 2: define the body of func in the bracket
@@ -157,7 +157,7 @@ object Map
 ```
 
 The output will be:
-```Scala
+```
 List(Joel, Ed, Chris, Maurice)
 ```
 Since we have discussed the use of lambda expression in Scala, we can also use lambda expression
@@ -180,7 +180,7 @@ object Map
 ```
 
 The output will be:
-```Scala
+```
 List(1, 4, 9, 16, 25, 36)
 ```
 
@@ -188,7 +188,7 @@ List(1, 4, 9, 16, 25, 36)
 The filter() method is utilized to select all elements of the list which satisfies a stated predicate.
 
 #### syntax
-```
+```Scala
 def filter(p: (A) => Boolean): List[A]
 ```
 
@@ -204,7 +204,7 @@ object Filter {
 }
 ```
 The output will be:
-```Scala
+```
 List(1, 2, 3, 6, 9, 12)
 List(3, 6, 9, 12)
 ```
@@ -247,45 +247,43 @@ object Map
 ```
 
 The output will be:
-```Scala
+```
 Sum using foldLeft: 15
 Sum using foldRight: 15
 ```
-But in Scala, we have a fold() method also which does not specify the order of processing order of elements in the input list. Next we will be looking at the difference between `fold` and `foldLeft`/`foldRight`
-
-The fold method primarily exists to support ***parallelism***. 
+But in Scala, we have a fold() method also which does not specify the order of processing order of elements in the input list. The fold method primarily exists to support ***parallelism***. 
 In order to make parallel programming easier, parallel collections were added to the Scala standard library. By sparing users from low-level parallelization complexities, parallel collections offer them a straightforward and recognisable high-level abstraction. The processing of large amounts of data, multimedia, and heavy calculations can all be sped up with parallel computing. Hence parallel collections will be useful when users are dealing with large input data.
 To perform the same operation in ***parallel***, one just simply invoke the `par` method on the collection.
-```Scala
-// first we have to parallelize the list using .par()
+```
+// first we want to parallelize the list to see the difference between the behavior of fold() and foldLeft()/foldRight().
 // without parallelizing the list fold() will act exactly the same as foldLeft().
 // the script below will print the actuall process of the internal execution
 
-val parallelNum = List(1, 2, 3, 4, 5).par
-val foldResult = parallelNum.fold(0) { (acc1, acc2) =>
-  val sum = acc1 + acc2
-  println(s"Fold: acc1_is($acc1) + acc2_is($acc2) = $sum")
-  sum
-}
-println(foldResult)
-
-val foldLeftResult = parallelNum.foldLeft(0) { (acc, currNum) =>
-  val sum = acc + currNum
-  println(s"FoldLeft: acc_is($acc) + currNum_is($currNum) = $sum ")
-  sum
+  val parallelNum = List(1, 2, 3, 4, 5).par
+  val foldResult = parallelNumSeq.fold(0) { (acc1, acc2) =>
+    val sum = acc1 + acc2
+    println(s"Fold: acc1($acc1) + acc2($acc2) = $sum")
+    sum
   }
-println(foldLeftResult)
+  println(foldResult)
 
-val foldRightResult = parallelNum.foldRight(0) { (currNum, acc) =>
-  val sum = acc + currNum
-  println(s"FoldRight: acc_is($acc) + currNum_is($currNum) = $sum")
-  sum
-}
-println(foldRightResult)
-```
+  val foldLeftResult =
+    parallelNum.foldLeft(0) { (acc, currNum) =>
+      val sum = acc + currNum
+      println(s"FoldLeft: acc($acc) + currNum($currNum) = $sum ")
+      sum
+    }
+  println(foldLeftResult)
+
+  val foldRightResult =
+    parallelNum.foldRight(0) { (currNum, acc) =>
+      val sum = acc + currNum
+      println(s"FoldRight: acc($acc) + currNum($currNum) = $sum")
+      sum
+    }
+  println(foldRightResult)
+
 And the output will be:
-
-```
 Fold: acc1(0) + acc2(4) = 4
 Fold: acc1(0) + acc2(2) = 2
 Fold: acc1(0) + acc2(5) = 5
@@ -309,17 +307,19 @@ FoldRight: acc(12) + currNum(2) = 14
 FoldRight: acc(14) + currNum(1) = 15
 15
 ```
-Let's look at their method signatures to better grasp the distinctions between the different folds:
-```Scala
-fold[A1 >: A](z: A1)(op: (A1, A1) => A1): A1
-foldLeft[B](z: B)(f: (B, A) => B): B
-foldRight[B](z: B)(f: (A, B) => B): B
-```
 
+## Conclusion
+In this tutorial, we delved into the world of functional programming in Scala, focusing on the equivalents of lambda, map, filter, and fold. We started with a brief introduction to Scala and its basic syntax, then explored lambda expressions and their use cases.
 
-## Conlusion
+Next, we discussed higher-order functions such as `map`, which applies a function to each element in a collection, `filter`, which selects elements based on a predicate, and `fold`, which combines elements using an accumulator. We also highlighted the difference between `foldLeft`, `foldRight`, and the parallel fold in terms of processing order and parallelism.
 
+Parallelism is important to improve the performance of functional programming, particularly for large datasets and computationally intensive tasks. Scala's support for parallel collections enables developers to harness the power of parallelism without dealing with low-level complexities. By converting a sequential collection into a parallel one using the `par` method, developers can take advantage of the parallel versions of `map`, `filter`, and `fold`, further optimizing their code for performance.
+
+In summary, understanding and using functional programming concepts in Scala, such as lambda expressions and higher-order functions, can lead to more efficient, expressive, and parallelizable code. Scala's combination of functional and object-oriented programming features provides a powerful foundation for tackling a wide range of projects, from web development to data analysis and scientific computing.
 
 ## Reference
-https://docs.scala-lang.org/overviews/scala-book/collections-methods.html#map  
+https://www.baeldung.com/scala/lambda-expressions
+
+https://docs.scala-lang.org/overviews/scala-book/collections-methods.html#map
+
 https://www.baeldung.com/scala/folding-lists
