@@ -95,7 +95,6 @@ The output will be:
 ```
 
 
-
 In Scala, a collection is a data structure that houses a number of items. Collections include things like List, Tuple, Option, Map, etc.
 Many techniques can be used to modify these collections. Here we will be focusing on the behavior of the HOPs on the most common type of Collection which is Lists. 
 
@@ -186,7 +185,10 @@ List(1, 4, 9, 16, 25, 36)
 ```
 
 ### filter
-
+The filter() method is utilized to select all elements of the list which satisfies a stated predicate.
+```
+def filter(p: (A) => Boolean): List[A]
+```
 
 ### fold
 The fold method iterates over a collection using an initial value for the accumulator and a function that correctly updates the accumulator using each element. The fold method has two variants - `foldLeft` and `foldRight`. They differ in the direction in which they traverse the collection: `foldLeft` processes elements from left to right, and `foldRight` processes elements from right to left.
@@ -231,8 +233,6 @@ Sum using foldLeft: 15
 Sum using foldRight: 15
 ```
 
-
-
 The fold method iterates over a collection using an initial value for the accumulator and a function that correctly updates the accumulator using each element. The fold method has two variants - foldLeft and foldRight. 
 We are familiar with foldLeft and foldRight since it has been covered in Racket.
 
@@ -246,9 +246,6 @@ To perform the same operation in ***parallel***, one just simply invoke the `par
 ```
 // first we want to parallelize the list to see the difference between the behavior of fold() and foldLeft()/foldRight().
 // without parallelizing the list fold() will act exactly the same as foldLeft().
-
-val parallelNum = List(1, 2, 3, 4, 5, 6).par
-
 // the script below will print the actuall process of the internal execution
 
   val parallelNum = List(1, 2, 3, 4, 5).par
