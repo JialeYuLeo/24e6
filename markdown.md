@@ -4,13 +4,13 @@
  - [Introduction](introduction)  
  - [Overview of Scala](overview-of-Scala)  
  - [Basic Syntax](basic-syntax)
- - [HOPs in Scala](hops-in-scala)
+ - [lamda and HOPs in Scala](lambda-hops-in-scala)
    - [lamda](lamda)
    - [map](map)
    - [filter](filter)
    - [fold](fold)
  - [Conclusion](conslusion)
- 
+ - [Reference](reference)
  
  ## Introduction
  Functional programming is a programming paradigm that focuses on the use of functions to perform operations. 
@@ -43,10 +43,101 @@ In this lesson, we will be using **Scala 3** to demonstrate HOPs in Scala.
 
 ## Basic Syntax
 
-## HOPs in Scala
+## lambda and HOPs in Scala
+In this section we will be disscussing the use of lambda and HOPs in Scala, the code example will be 
 
 ### Map
+In Scala, a collection is a data structure that houses a number of items. Collections include things like arrays, lists, etc. Many techniques can be used to modify these collections. Map() is one such popular technique that Scala provides.
+The behavior is similar to Racket.
+Some important remarks:
+- Every collection object has the map() method.
+- map() returns a new collection of the same type as the source collection.
+
+#### Syntax
+```
+// collection is the original collection
+// func is a predefined function
+collection = (e1, e2, e3, ...)
+result_collection = collection.map(func)
+```
+
+#### Example 1: pass a user defined function
+```
+object Map
+{
+    // square of an integer
+    def square(a:Int):Int =
+    {
+        a*a
+    }  
+    def main(args:Array[String]) = 
+    {
+        // original collection
+        val collection = List(1, 2, 3, 4, 5, 6) 
+        
+        // result collection
+        val result_collection = collection.map(square)
+        println(result_collection)
+  
+    }
+  
+}
+The output will be:
+List(1, 4, 9, 16, 25, 36)
+```
+#### Example 2: define the body of func in the bracket
+```
+object Map
+{
+    // square of an integer
+    def square(a:Int):Int =
+    {
+        a*a
+    }  
+    def main(args:Array[String]) = 
+    {
+        // original collection
+        val collection = List("joel", "ed", "chris", "maurice")
+        
+        // result collection
+        val result_collection = collection.map(_.capitalize)
+        println(result_collection)
+    }
+  
+}
+The output will be:
+List(Joel, Ed, Chris, Maurice)
+```
+Since we have discuessed the use of lambda expression in Scala, we can also use lambda expression
+#### Example 3
+```
+object Map
+{
+    // square of an integer
+    def square(a:Int):Int =
+    {
+        a*a
+    }  
+    def main(args:Array[String]) = 
+    {
+        // original collection
+        val collection = List(1, 2, 3, 4, 5, 6) 
+        
+        // result collection
+        val result_collection = collection.map(x => x * x )
+        println(result_collection)
+  
+    }
+  
+}
+The output will be:
+List(1, 4, 9, 16, 25, 36)
+```
 
 ### Fold
 
 ## Conlusion
+
+
+## Reference
+https://docs.scala-lang.org/overviews/scala-book/collections-methods.html#map
