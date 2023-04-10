@@ -89,11 +89,6 @@ List(1, 4, 9, 16, 25, 36)
 ```
 object Map
 {
-    // square of an integer
-    def square(a:Int):Int =
-    {
-        a*a
-    }  
     def main(args:Array[String]) = 
     {
         // original collection
@@ -113,11 +108,6 @@ Since we have discuessed the use of lambda expression in Scala, we can also use 
 ```
 object Map
 {
-    // square of an integer
-    def square(a:Int):Int =
-    {
-        a*a
-    }  
     def main(args:Array[String]) = 
     {
         // original collection
