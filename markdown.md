@@ -186,8 +186,27 @@ List(1, 4, 9, 16, 25, 36)
 
 ### filter
 The filter() method is utilized to select all elements of the list which satisfies a stated predicate.
+
+#### syntax
 ```
 def filter(p: (A) => Boolean): List[A]
+```
+
+#### Example
+```Scala
+object Filter {
+   def main(args: Array[String]) = {
+      val list = List(3, 6, 9, 4, 2)
+      println(list)
+      val result = list.filter(x=>{x % 3 == 0})
+      println(result)      
+   }
+}
+```
+The output will be:
+```Scala
+List(3, 6, 9, 4, 2)
+List(3, 6, 9)
 ```
 
 ### fold
