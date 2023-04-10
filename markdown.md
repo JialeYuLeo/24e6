@@ -44,11 +44,11 @@ In this lesson, we will be using **Scala 3** to demonstrate HOPs in Scala.
 ## Basic Syntax
 
 ## lambda and HOPs in Scala
-In this section we will be disscussing the use of lambda and HOPs in Scala.
+In this section we will be discussing the use of lambda and HOPs in Scala.
 
 ### lambda
 
-Lambda expression uses anonymous functions to define reusable functions in a concise way. It is particularly useful when you need to pass a function as an argument to higher-order function, such as map and filter.
+Lambda expressions use anonymous functions to define reusable functions in a concise way. It is particularly useful when you need to pass a function as an argument to a higher-order function, such as `map` or `filter`.
 
 #### Syntax
 ```Scala
@@ -161,7 +161,7 @@ The output will be:
 ```Scala
 List(Joel, Ed, Chris, Maurice)
 ```
-Since we have discuessed the use of lambda expression in Scala, we can also use lambda expression
+Since we have discussed the use of lambda expression in Scala, we can also use lambda expression
 #### Example 3
 ```Scala
 object Map
@@ -186,11 +186,47 @@ List(1, 4, 9, 16, 25, 36)
 ```
 
 ### fold
-The fold method iterates over a collection using an initial value for the accumulator and a function that correctly updates the accumulator using each element. The fold method has two variants - foldLeft and foldRight. 
+The fold method iterates over a collection using an initial value for the accumulator and a function that correctly updates the accumulator using each element. The fold method has two variants - `foldLeft` and `foldRight`. They differ in the direction in which they traverse the collection: `foldLeft` processes elements from left to right, and `foldRight` processes elements from right to left.
 
+#### Syntax
 
+foldLeft: 
+```Scala
+collection.foldLeft(initialValue)((accumulator, element) => operation)
+```
+foldRight: 
+```Scala
+collection.foldRight(initialValue)((element, accumulator) => operation)
+```
+In both cases, the initialValue is the starting value of the accumulator, and operation is the binary function used to combine the accumulator and the current element.
 
+#### Example
+```Scala
+object Map
+{
+    def main(args:Array[String]) = 
+    {
+        val numbers = List(1, 2, 3, 4, 5)
 
+        // A binary function that returns the sum of two integers
+        val sum = (accumulator: Int, element: Int) => accumulator + element
+
+        // Use foldLeft to sum the elements of the list with an initial value of 0
+        val leftSum = numbers.foldLeft(0)(sum)
+        println(s"Sum using foldLeft: $leftSum")
+
+        // Use foldRight to sum the elements of the list with an initial value of 0
+        val rightSum = numbers.foldRight(0)(sum)
+        println(s"Sum using foldRight: $rightSum")
+    }
+}
+```
+
+The output will be:
+```Scala
+Sum using foldLeft: 15
+Sum using foldRight: 15
+```
 
 ## Conlusion
 
